@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>给松鼠的一句话</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="htttps://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+</head>
+<body>
+        <h1>给我留一句话吧！</h1>
+        <div class="container">
+        <!-- ✅ 输入组 -->
+        <div class="input-group">
+          <input type="text" id="name" placeholder="你的名字/署名">
+          <textarea id="message" placeholder="留言..."></textarea>
+        </div>
+      
+        <!-- ✅ 样式选择组 -->
+        <div class="style-options">
+          <div class="color-group">
+            <label>颜色：</label>
+            <button class="color-btn" data-color="#333">黑</button>
+            <button class="color-btn" data-color="#d9534f">红</button>
+            <button class="color-btn" data-color="#0275d8">蓝</button>
+            <button class="color-btn" data-color="#5cb85c">绿</button>
+            <button class="color-btn" data-color="#f0ad4e">橙</button>
+          </div>
+          <div class="font-group">
+            <label for="fontsize">字号：</label>
+            <select id="fontsize">
+              <option value="14px">小</option>
+              <option value="18px" selected>中</option>
+              <option value="24px">大</option>
+              <option value="32px">特大</option>
+            </select>
+          </div>
+        </div>
+      
+        <!-- ✅ 提交按钮组 -->
+        <div class="submit-group">
+          <button onclick="submitMessage()">上传</button>
+        </div>
+      </div>
+  <div id="floating-messages"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
