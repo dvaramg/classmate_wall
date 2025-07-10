@@ -7,7 +7,7 @@
   <link href="htttps://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
 </head>
 <body>
-        <h1>给我留一句话吧！</h1>
+        <h1>一条留言，一段回忆 ✉️</h1>
         <div class="container">
         <!-- ✅ 输入组 -->
         <div class="input-group">
@@ -42,6 +42,47 @@
         </div>
       </div>
   <div id="floating-messages"></div>
+
+   <!-- Firebase 初始化模块 -->
+   <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+    import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+  
+    // Firebase 配置（来自你的 Firebase 控制台）
+    const firebaseConfig = {
+      apiKey: "AIzaSyB2OgYsLUI0J9eWGGrS0yeFbZrY5w5FwUw",
+      authDomain: "classmate-af716.firebaseapp.com",
+      projectId: "classmate-af716",
+      storageBucket: "classmate-af716.appspot.com",
+      messagingSenderId: "447352345099",
+      appId: "1:447352345099:web:b9b23385c0d95ededb6d0e",
+      measurementId: "G-8B7XQMLGWV"
+    };
+  
+    // 初始化 Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+  
+    // 匿名登录
+    signInAnonymously(auth)
+      .then(() => {
+        const messagesCollectionRef = collection(db, "messages");
+  
+        // 暴露全局变量以供 main.js 使用
+        window.messagesCollectionRef = messagesCollectionRef;
+        window.addDoc = addDoc;
+        window.onSnapshot = onSnapshot;
+        window.query = query;
+        window.orderBy = orderBy;
+  
+        console.log("🔥 Firebase 已初始化并登录成功");
+      })
+      .catch((error) => {
+        console.error("❌ 匿名登录失败:", error);
+      });
+  </script>
 
   <script src="main.js"></script>
 </body>
