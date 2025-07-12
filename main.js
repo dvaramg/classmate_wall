@@ -86,7 +86,7 @@ function createFloatingText(text, color, fontSize) {
   floating.style.color = color;
   floating.style.fontSize = fontSize;
 
-  const y = Math.random() * (window.innerHeight - 60);
+  const y = Math.random() * (window.innerHeight *0.3);
   floating.style.top = `${y}px`;
   floating.style.left = '100vw';
   const duration = 12 + Math.random() * 8;
